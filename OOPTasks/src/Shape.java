@@ -2,12 +2,18 @@ abstract class Shape {
     private double side1;
     private double side2;
 
-    public void setSide1(double _side1){
-        side1 = _side1;
+    public void setSide1(double side1) throws InvalidDataException{
+        if (side1 < 1){
+            throw new InvalidDataException("Side1 cannot be less than 1");
+        }
+        this.side1 = side1;
     }
 
-    public void setSide2(double _side2){
-        side2 = _side2;
+    public void setSide2(double side2) throws InvalidDataException{
+        if (side2 < 1){
+            throw new InvalidDataException("Side2 cannot be less than 1");
+        }
+        this.side2 = side2;
     }
 
     public double getSide1(){
@@ -18,13 +24,19 @@ abstract class Shape {
         return side2;
     }
 
-    public Shape (double _side1, double _side2){
-        side1 = _side1;
-        side2 = _side2;
+    public Shape (double side1, double side2) throws InvalidDataException{
+        if (side1 < 1){
+            throw new InvalidDataException("Side1 cannot be less than 1");
+        }
+        if (side2 < 1){
+            throw new InvalidDataException("Side2 cannot be less than 1");
+        }
+        this.side1 = side1;
+        this.side2 = side2;
     }
 
-    public abstract double countSquare();
+    public abstract double countSquare() throws SquareCalculationException, PerimeterCalculationException;
 
-    public abstract double countPerimeter();
+    public abstract double countPerimeter() throws PerimeterCalculationException;
 
 }

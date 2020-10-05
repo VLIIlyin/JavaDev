@@ -30,15 +30,34 @@
 //* Перегрузить метод getFormattedDate() еще 1-м методом, getFormattedDate(String format) который возвращает дату в указанном формате
 // примеры (dd/mm/yyyy или yyyy/mm/dd и) в указанном формате всегда будут присутствовать обозначения dd,mm,yyyy и разделитель.
 // Вам нужно будет только расположить ваши данные в верном формате и разделить требуемым разделителем.
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main {
     public static void main(String[] args) {
-        Shape rectangle = new Rectangle(2.34, 4.23);
-        System.out.printf("Square of rectangle = %s \n", Double.toString(rectangle.countSquare()));
-        System.out.printf("Perimeter of rectangle = %s \n", Double.toString(rectangle.countPerimeter()));
+        Logger logger = Logger.getLogger(Main.class.getName());
+        Shape rectangle = null;
+        try {
+            rectangle = new Rectangle(-2, 4.23);
 
-        Shape triangle = new Triangle(13.433, 11.34, 4.223);
-        System.out.printf("Square of triangle = %s \n", Double.toString(triangle.countSquare()));
-        System.out.printf("Perimeter of triangle = %s \n", Double.toString(triangle.countPerimeter()));
+            System.out.printf("Square of rectangle = %s \n", Double.toString(rectangle.countSquare()));
+            System.out.printf("Perimeter of rectangle = %s \n", Double.toString(rectangle.countPerimeter()));
+        } catch (InvalidDataException e) {
+            logger.log(Level.WARNING, e.getMessage(), e);
+        }
+
+        Shape triangle = null;
+        try {
+            triangle = new Triangle(13.433, 11.34, 4.223);
+
+            System.out.printf("Square of triangle = %s \n", Double.toString(triangle.countSquare()));
+            System.out.printf("Perimeter of triangle = %s \n", Double.toString(triangle.countPerimeter()));
+
+        } catch (InvalidDataException e) {
+            logger.log(Level.WARNING, e.getMessage(), e);
+        }
 
         final double bynValue = 55;
         USDConverter usdConverter = new USDConverter(bynValue);
@@ -54,5 +73,15 @@ public class Main {
 
         Date internationalFormat = new InternationalFormat(1992, (short)10, (short)4);
         System.out.printf("date in international format %s \n", internationalFormat.getFormattedDate("dd-MM-YYYY"));
+
+        CustomResourceTest customResourceTest = new CustomResourceTest();
+
+        customResourceTest.callResourceTryCatchFinal();
+        System.out.print('\n');
+        try {
+            customResourceTest.callResourceTryWithResource();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

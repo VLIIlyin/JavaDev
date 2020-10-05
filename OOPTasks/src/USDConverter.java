@@ -14,16 +14,16 @@ public class USDConverter implements Converter{
         return instance;
     }
 
-    public void setBynValue(double _bynValue){
-        bynValue = _bynValue;
+    public void setBynValue(double bynValue){
+        this.bynValue = bynValue;
     }
 
     public double getBynValue(){
         return bynValue;
     }
 
-    public USDConverter(double _bynValue){
-        bynValue = _bynValue;
+    public USDConverter(double bynValue){
+        this.bynValue = bynValue;
     }
 
     public double convert(){

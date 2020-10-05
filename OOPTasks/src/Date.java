@@ -7,16 +7,16 @@ public abstract class Date {
     private short month;
     private short day;
 
-    public void setYear(int _year) {
-        year = _year;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    public void setMonth(short _month) {
-        month = _month;
+    public void setMonth(short month) {
+        this.month = month;
     }
 
-    public void setDay(short _day) {
-        day = _day;
+    public void setDay(short day) {
+        this.day = day;
     }
 
     public int getYear() {
@@ -31,21 +31,21 @@ public abstract class Date {
         return day;
     }
 
-    public Date(int _year, short _month, short _day) {
-        year = _year;
-        month = _month;
-        day = _day;
+    public Date(int year, short month, short day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
     }
 
     public abstract String getFormattedDate();
 
-    public String getFormattedDate(String _dateFormat){
+    public String getFormattedDate(String dateFormat){
         String              dateString;
-        SimpleDateFormat    dateFormat  = new SimpleDateFormat(_dateFormat);
-        GregorianCalendar   calendar    = new GregorianCalendar(getYear(), getMonth() - 1, getDay());
-        java.util.Date      date        = calendar.getTime();
+        SimpleDateFormat    simpleDateFormat    = new SimpleDateFormat(dateFormat);
+        GregorianCalendar   calendar            = new GregorianCalendar(getYear(), getMonth() - 1, getDay());
+        java.util.Date      date                = calendar.getTime();
 
-        dateString = dateFormat.format(date);
+        dateString = simpleDateFormat.format(date);
 
         return dateString;
     }

@@ -3,8 +3,8 @@ import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 public class InternationalFormat extends Date {
-    public InternationalFormat(int _year, short _month, short _day){
-        super(_year, _month, _day);
+    public InternationalFormat(int year, short month, short day){
+        super(year, month, day);
     }
 
     @Override

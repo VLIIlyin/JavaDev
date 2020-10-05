@@ -14,16 +14,16 @@ public class EURConverter {
         return instance;
     }
 
-    public void setBynValue(double _bynValue){
-        bynValue = _bynValue;
+    public void setBynValue(double bynValue){
+        this.bynValue = bynValue;
     }
 
     public double getBynValue(){
         return bynValue;
     }
 
-    public EURConverter(double _bynValue){
-        bynValue = _bynValue;
+    public EURConverter(double bynValue){
+        this.bynValue = bynValue;
     }
 
     public double convert(){
